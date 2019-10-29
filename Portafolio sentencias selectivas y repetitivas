@@ -1,0 +1,312 @@
+/******************************************************************************
+EJERCICIO 1(DANIELA)
+En una tienda deparamental ofrecen descuentos a los clientes en la Navidad, de acuerdo con el monto de su compra.
+El criterio para establecer su descuento se muestra abajo. Construye el correspondiente programa en C que, al 
+recibir como dato el monto de la compra del cliente, obtenga el precio real que debe pagar luego de aplicar el descuento.
+Compra<$800-> Descuento 0%
+$800<Compra<$1500-> Descuento 10%
+$1500<Compra<$5000-> Descuento 15%
+$5000<Compra -> Descuento 20%
+
+EJERCICIO 2 (ISRAEL)
+Construye el respectivo programa en C que, al recibir como datos tres variables reales que representan los lados de un probable triángulo, determine si esos lados corresponden a un triángulo. En caso de serlo, además de escribir el área correspondiente compruebe si el mismo es equilátero, isósceles o escaleno.
+Datos: L1, L2 y L3 (variables de tipo real que representan los posibles lados de un triángulo).
+Consideraciones:
+• Si se cumple la propiedad de que la suma de los dos lados menores es menor a la del lado restante, es un triángulo.
+• El área se obtiene aplicando la siguiente fórmula:
+area= sqrt((s*(sa)*(sb)*(sc))
+
+EJERCICIO 3(ERIK)
+Escribe un programa en C que obtenga y escriba tanto los términos
+como la suma de los términos de la siguiente serie: (SENTENCIA WHILE)
+
+EJERCICIO 4(ERIK)
+Los organizadores de un acto electoral solicitaron realizar un
+programa para manejar el conteo de votos. En la elección hay cinco
+candidatos, los cuales se representan con los valores comprendidos 
+entre 1 y 5. El programa debe obtener el número de votos de cada 
+candidato y el porcentaje que obtuvo respecto al total de los 
+votantes. Se ingresa los votos  de manera desordenada, 
+el final de ingreso de los votos se representa por un cero.
+
+Ejemplo
+ INGRESO DE VOTOS:
+2 5 5 4 3 5 1 2 4 3 1 2 4 5 0
+2 representa un voto para el candidato2
+5 representa un voto para el candidato5
+4 representa un voto para el candidato4
+
+EJERCICIO 5(DANIELA)
+A la clase de Estructuras de Datos del profesor López asiste un grupo numeroso de alumnos. 
+Construye un programa en C que  imprima la matrícula y el promedio de las cinco calificaciones de cada alumno.
+Además, debe obtener la matrícula y el promedio tanto del mejor como del peor alumno. (SENTENCIA FOR)
+
+Datos: MAT1, CAL1,1, CAL1,2, CAL1,3, CAL1,4, CAL1,5
+MAT2, CAL2,1, CAL2,2, CAL2,3, CAL2,4, CAL2,5
+. . .
+0
+
+Donde: MATi es una variable de tipo entero que representa la matrícula del alumno i. 
+El fin de datos está dado por 0.
+CALi,j es una variable de tipo real que representa la calificación j del alumno i.
+
+*******************************************************************************/
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+void main()
+{
+    int op;
+    printf("\t\t*****MENU*****\nElija una el ejercicio que desee revisar:\n1)EJERCICIO 1\n2)EJERCICIO 2\n3)EJERCICIO 3\n");
+    printf("4)EJERCICIO 4\n5)EJERCICIO 5\n6)SALIR\nEscriba el número de la opcion elegida:");
+    scanf("%d",&op);
+    switch (op)
+    {
+        case 1:
+        {
+            int compra=0,precioReal;//Declaración de varibles
+                
+            printf("Ingrese el valor de su compra:\n");//Imprimir el mensaje para que ingrese su compra
+                
+            scanf("%d",&compra);//Lee la compra
+                
+            if(compra<800)//Condicional si la compra es menor a 800
+            {
+                precioReal=(compra*100)/100;//si es verdad, hara la operación para ver el descuento
+                    
+                printf("El precio total es:%d\t",precioReal);//imprimir el precio total, ya con el descuento
+            }
+            else if(compra>800 && compra<1500)//sino, si la compra es mayor a 800 pero menor a 1500 
+            {
+                precioReal=(compra*90)/100; //si es verdad, hara la operación para ver el descuento
+                    
+                printf("El precio total es:%d\t",precioReal);//imprimir el precio total, ya con el descuento
+            }
+            else if(compra>1500 && compra<5000)//sino, si la compra es mayor a 1500 pero menor a 5000
+            {
+                precioReal=(compra*85)/100;//si es verdad, hara la operación para ver el descuento
+                    
+                printf("El precio total es:%d\t",precioReal);//imprimir el precio total, ya con el descuento
+            }
+            else if(compra>5000)//sino, si la compra es mayor a 5000
+            {
+                precioReal=(compra*80)/100;//si es verdad, hara la operación para ver el descuento
+                    
+                printf("El precio total es:%d\t",precioReal);//imprimir el precio total, ya con el descuento
+            }
+        }
+        break;
+        case 2:
+        {
+            int a,b,c,s=0; //declaración de las variables "a", "b" y "c" como de la variable "s" que es un resultado
+            float area=0; //declaración de la variable de resultado ¨area¨
+            
+            printf("\ningrese medida del primer lado: "); //pedir el ingreso del primer lado
+            scanf("%d",&a); //escaneo del primer lado
+            
+            printf("\n\ningrese medida del segundo lado: "); //pedir el ingreso del segundo lado
+            scanf("%d",&b); //escaneo del segundo lado
+            
+            printf("\n\ningrese medida del tercer lado: "); //pedir el ingreso del tercer lado
+            scanf("%d",&c); //escaneo del tercer lado
+            
+            if(a+b>c||b+c>a||c+a>b) // if para ver si los datos ingresados son de un triangulo o no
+            {
+                printf("\nes un triángulo"); //si es un triángulo saldrá como resultado
+                
+                s=(a+b+c)/2; //el primer resultado, ¨s¨, es igual a: primer lado + segundo lado + tercer lado, que es el semiperimetro
+                area=sqrt(s*(s*a)*(s*b)*(s*c)); //el area es igual a: raíz cuadrada de: (s*(s*primer lado)*(s*segundo lado)*(s*tercer lado))
+                
+                printf("\nel area de el triángulo es:%.2f metros cuadrados.",area); //escribir en la pantalla cual es el area del triángulo
+                
+                if(a==b&&a==c&&b==c) //si el primer lado es igual al segundo y el primer lado es igual al tercero, entonces:
+                {
+                    printf("\nel triángulo es equilátero"); //escribir en la pantalla que el triángulo es equilátero
+                }
+                else if(a==b||b==c||c==a) //sino, si el primer lado es igual al segundo o el segundo es igual al tercero o si el tercero es igual al primero entonces:
+                {
+                    printf("\nel triángulo el isósceles"); //escribir en la pantalla que el triángulo es isósceles
+                }
+                else //sino, entonces:
+                    printf("\nel triángulo es escaleno"); //escribir en la pantalla que el triangulo es escaleno
+            }
+            else //sino, entonces:
+                printf("\nno es un triangulo"); //escribir en la pantalla que no es un triangulo
+        break;
+        case 3:
+        {
+            int succ=2,SSE=0,CAM=1;// declaracion de las variables succ para sucesion, SSE para suma y 
+            //CAM para el cambio de valor a sumar en la sucesion
+                
+            while(succ<=2500)//ejecuta el conjunto de instucciones hasta que la sucesion llega a un valor mayor a 2500
+            {       
+                if(CAM==1)//evalua CAM para sumar 5
+                {
+                    printf("%d\n",succ); //imprime el termino actual de la sucesion
+                    
+                    SSE=SSE+succ;//añade valores a la varible SSE(suma)
+                    
+                    CAM=2;//cambia el valor a sumar para obtener el siguiente termino de la sucesión
+                    
+                    succ=succ+ 5;//obtiene el siguiente termino de la sucesión
+                    
+                }
+                else if(CAM=2)//evalua cam para sumar 3
+                {
+                    printf("%d\n",succ);//imprime el termino actual de la sucesion
+                    
+                    SSE=SSE+succ;//añade valores a la varible SSE(suma)
+                    
+                    CAM=1;//cambia el valor a sumar para obtener el siguiente termino de la sucesión
+                    
+                    succ=succ+ 3;//obtiene el siguiente termino de la sucesión
+                }
+            }
+            printf("La suma de los valores de la sucesion es %d.",SSE);// imprime la variable SSE (suma)
+        }
+        break;
+        case 4:
+        {
+            int vot1=0, vot2=0, vot3=0, vot4=0, vot5=0, voto, i;// declaraci[on de variales vot1, vot2, vot3, vot4, vot5 para los votos de los candidatos 1, 2, 3, 4 y 5 respectivamente
+            //ademas se declara i para controlar la la primera vez que se ejecuta el programa y cambiar el  mensaje que se imprime
+                
+            float porcV1=0, porcV2=0, porcV3=0, porcV4=0,porcV5=0,TotVot=0;// se declaran las variables porcV1, porcV2, porcV3, porcV4  y porcV5 para los porcentajes de los votos
+            // de los candidatos 1, 2, 3, 4 y 5 respectivamente, ademas de la variable TotoVot para los votos totales y la obtencion de los porcentajes de los votos
+                
+            printf ("Ingrese su voto entre 1 y 5, si desea salir presione 0: ");//pide un numero al usuario entre el 1 y el 5 representando a los votos de los candidatos
+            //tambien ofrece el 0 como opcion para salir directamente del proceso
+                
+            scanf("%d",&voto);// recoge el numero ingresado
+                
+            i=0; //declara la variable i como 0 para la primera ejecucion del programa
+            do
+            {
+                if (i==0)//evalua la variable i para ejecutar la sentencia con con el mensaje principal por una sola vez                 
+                {
+                    i++;//cambia la variable i para no ejecutarse por segunda vez
+                        
+                    while (voto<0||voto>5)//evalua si el numero ingresado es menor a cero o mayor a 5
+                    {
+                        printf("Por favor ingrese su voto entre 1 y 5:");//este mensaje salta cuando el usuario ingresa un valor fuera del conjunto cerrado [0,5]
+                        printf("\nSi desea salir de la recopilacion presione cero:");
+                        scanf("%d",&voto);// lee el numero ingresado
+                    }
+                        
+                    if (voto==1)//este if escanea numero a numero la ubicacion del voto y lo asiga a cualquiera de las variables voto 1, 2, 3, 4 o 5
+                        
+                        vot1++;//aumenta la unidad a la variable vot1
+                        
+                    else if (voto==2)//este if escanea numero a numero la ubicacion del voto y lo asiga a cualquiera de las variables voto 1, 2, 3, 4 o 5
+                        
+                        vot2++;//aumenta la unidad a la variable vot2
+                        
+                    else if (voto==3)//este if escanea numero a numero la ubicacion del voto y lo asiga a cualquiera de las variables voto 1, 2, 3, 4 o 5
+                        
+                        vot3++;//aumenta la unidad a la variable vot3
+                        
+                    else if (voto==4)//este if escanea numero a numero la ubicacion del voto y lo asiga a cualquiera de las variables voto 1, 2, 3, 4 o 5
+                        
+                        vot4++;//aumenta la unidad a la variable vot4
+                        
+                    else if (voto==5)//este if escanea numero a numero la ubicacion del voto y lo asiga a cualquiera de las variables voto 1, 2, 3, 4 o 5
+                        
+                        vot5++;//aumenta la unidad a la variable vot5
+                }
+                else if (i>0)//evalua la variable i para ejecutar las mismas instrucciones con un mensaje distinto, a partir de este if se repiten todas las 
+                //ya comentadas hasta cierto punto
+                {
+                    printf("Ingrese su voto entre 1 y 5, si desea terminar la recopilacion presione 0: ");
+                    scanf("%d",&voto);
+                    while (voto<0||voto>5)
+                    {
+                        printf("Por favor ingrese su voto entre 1 y 5:");
+                        printf("\nSi desea salir de la recopilacion presione cero:");
+                        scanf("%d",&voto);
+                    }
+                    
+                    if (voto==1)
+                        vot1++;
+                    else if (voto==2)
+                        vot2++;
+                    else if (voto==3)
+                        vot3++;
+                    else if (voto==4)
+                        vot4++;
+                    else if (voto==5)
+                        vot5++;
+                    TotVot=vot1+vot2+vot3+vot4+vot5;// se obtiene el total de votos mediante la suma de las 5 variables de votos
+                        
+                    porcV1=(vot1/TotVot)*100;// obtienes el porcentaje de vot1 con la ayuda de la variable del total de votos
+                    porcV2=(vot2/TotVot)*100;// obtienes el porcentaje de vot2 con la ayuda de la variable del total de votos
+                    porcV3=(vot3/TotVot)*100;// obtienes el porcentaje de vot3 con la ayuda de la variable del total de votos
+                    porcV4=(vot4/TotVot)*100;// obtienes el porcentaje de vot4 con la ayuda de la variable del total de votos
+                    porcV5=(vot5/TotVot)*100;// obtienes el porcentaje de vot5 con la ayuda de la variable del total de votos
+                }
+                
+            }
+            while (voto!=0);//evalua el valor leido antes de ejecutar la instruccion do while
+            
+            if(i==0)//evalua si se ha salido del programa directamente
+                printf("Ha salido con exito del programa.");//avisa al usuario que ha salido del programa
+            else if (i>0)//evalua si ha ejecutado el programa varias veces 
+            {
+                printf("Los resultados de la recopilacion son:\n");
+                printf("El candidato 1 obtuvo %d, con un porcentaje de %.2f\n",vot1,porcV1);
+                printf("El candidato 2 obtuvo %d, con un porcentaje de %.2f\n",vot2,porcV2);
+                printf("El candidato 3 obtuvo %d, con un porcentaje de %.2f\n",vot3,porcV3);
+                printf("El candidato 4 obtuvo %d, con un porcentaje de %.2f\n",vot4,porcV4);
+                printf("El candidato 5 obtuvo %d, con un porcentaje de %.2f\n",vot5,porcV5);
+                printf("El total de votos fue de %.2f.",TotVot);
+            }//el conjunto de instrucciones en el else if imprime los porcentajes de los votos con sus cantidades respectivas y el total de votos
+        }
+        break;
+        case 5:
+        {
+            int cont,MAT=0,matriMejor=0,matriPeor=0;//Declaración de las variables de tipo entero
+            float sum,promedio,mejorProm=0,peorProm=100,CAL;//Declaracion de las variables de tipo real
+            printf("Ingrese la matricula del estudiante:\n");//Imprimir el mensaje para que ingrese la matricula
+            scanf("%d",&MAT);//Leer la matricula
+            while(MAT!=0)//Se va a repetir mientras la matricula sea diferente de 0
+            {
+                sum=0;//inicializa la suma en 0
+                for (cont=1;cont<=5&&MAT!=0;cont++)//se va a repetir mientras el contador sea menor o igual a 5
+                {
+                    printf("Ingrese la nota del estudiante:\n");//Imprimir el mensaje para que ingrese la nota
+                    scanf("%f",&CAL);//Lee la nota ingresada
+                    sum+=CAL;//Operación para ir sumando las calificaciones
+                }
+                promedio=sum/5;//Operacion para calcular el promedio 
+                printf("\nMatricula:%d",MAT);//Imprime la matricula
+                printf("\nPromedio:%.2f",promedio);//Imprime el promedio
+                if(promedio>mejorProm)//Condicion si el promedio es mayor al mejor promedio
+                {
+                    mejorProm=promedio;//si es verdad entonces el mejor promedio sera igual al promedio
+                    matriMejor=MAT;//la matricula del mejor alumno sera la matricula
+                }
+                if (promedio<peorProm)//si el promedio es menor al peor promedio
+                {
+                    peorProm=promedio;//el peor promedio sera igual al promedio
+                    matriPeor=MAT;//la matricula del peor sera igual a la matricula
+                }
+                printf("\n\nIngrese la matricula del siguiente alumno:");//Imprimir el mensaje para que se continue ingresando matriculas
+                scanf("%d",&MAT);//Lee la matricula
+            }
+            printf("Alumno con mejor promedio:\t%.2f\ty su matricula:\t%d",matriMejor,mejorProm);//Imprime el mejor promedio junto con la matricula
+            printf("\n\nAlumno con peor promedio:\t%.2f\ty su matricula:\t%d",matriPeor,peorProm);//Imprime el peor promedio junto con la matricula
+        }
+        break;
+        case 6:
+        {
+            printf("Ha salido del programa.");
+        }
+        break;
+        default:
+        {
+            printf("Opción inválida.");
+        }
+        break;
+    }
+}
+
+}
